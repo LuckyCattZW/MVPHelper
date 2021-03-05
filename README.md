@@ -147,4 +147,6 @@ public class MyPresenterImpl1 extends BasePresenter implements MyPresenterAPI{/*
 -keep class * extends z1w3.mvp.support.BasePresenter{public *;}
 ```
 
-
+### 计划中的功能实现
+1. Presenter的getter/setter实现IOC
+2. 运行时解析注解改为编译时解析
