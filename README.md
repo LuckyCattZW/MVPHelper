@@ -144,7 +144,6 @@ public class MyPresenterImpl1 extends BasePresenter implements MyPresenterAPI{/*
 ```properties
 # MVP
 -keep class z1w3.mvp.support.**{public *;}
--keep class * extends z1w3.mvp.support.BasePresenter{public *;}
 ```
 
 ### 计划中的功能实现
