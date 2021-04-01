@@ -98,6 +98,7 @@ public class MyPresenterImpl1 extends BasePresenter implements MyPresenter {
     @Override
     public void onCreate() {
         super.onCreate();
+        // 单例的Presenter 无法获取ViewAPI
         viewAPI = getViewAPI();
         mPresenterAPI2 = getOtherPresenterAPI(MyPresenterAPI2.class);
     }
