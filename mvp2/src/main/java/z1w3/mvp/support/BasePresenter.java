@@ -21,21 +21,22 @@ public abstract class BasePresenter {
     private Object target;
     private Context applicationContext;
 
-
     public void attach(Class<?> viewAPIClazz, Object target, Map<Class<?>, Object> otherPresenterMap) throws ClassCastException {
-        final Object cast = viewAPIClazz.cast(target);
-        if (cast == null) {
-            throw new ClassCastException("View-API convert error");
-        }
-        this.otherPresenterMap = copyMap(otherPresenterMap);
-        this.viewAPI = cast;
         this.target = target;
         final Context context = getContext();
+        this.otherPresenterMap = copyMap(otherPresenterMap);
         if(context != null){
             applicationContext = context.getApplicationContext();
             final Singleton annotation = this.getClass().getAnnotation(Singleton.class);
             if(annotation != null){
                 this.target = null;
+            }
+            else {
+                final Object cast = viewAPIClazz.cast(target);
+                if (cast == null) {
+                    throw new ClassCastException("View-API convert error");
+                }
+                this.viewAPI = cast;
             }
         }
     }

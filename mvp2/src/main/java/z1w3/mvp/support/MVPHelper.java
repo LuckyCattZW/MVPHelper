@@ -46,16 +46,20 @@ public class MVPHelper {
         try {
             if (presenterArray != null) {
                 for (BasePresenter basePresenter : presenterArray) {
-                    if ("attach".equalsIgnoreCase(name) && Storage.INSTANCE.isSingleton(basePresenter) && Storage.INSTANCE.isAttachFinishedMark(basePresenter)) {
+                    final boolean singleton = Storage.INSTANCE.isSingleton(basePresenter);
+                    final boolean attachFinishedMark = Storage.INSTANCE.isAttachFinishedMark(basePresenter);
+                    final boolean createFinishedMark = Storage.INSTANCE.isCreateFinishedMark(basePresenter);
+
+                    if ("attach".equalsIgnoreCase(name) && singleton && attachFinishedMark) {
                         continue;
-                    } else if ("onCreate".equalsIgnoreCase(name) && Storage.INSTANCE.isSingleton(basePresenter) && Storage.INSTANCE.isCreateFinishedMark(basePresenter)) {
+                    } else if ("onCreate".equalsIgnoreCase(name) && singleton && createFinishedMark) {
                         continue;
-                    } else if ("onDestroy".equalsIgnoreCase(name) && Storage.INSTANCE.isSingleton(basePresenter)) {
+                    } else if ("onDestroy".equalsIgnoreCase(name) && singleton) {
                         continue;
                     }
-                    else if ("attach".equalsIgnoreCase(name) && Storage.INSTANCE.isSingleton(basePresenter) && !Storage.INSTANCE.isAttachFinishedMark(basePresenter)) {
+                    else if ("attach".equalsIgnoreCase(name) && singleton && !attachFinishedMark) {
                         Storage.INSTANCE.modifyAttachMark(basePresenter);
-                    } else if ("onCreate".equalsIgnoreCase(name) && Storage.INSTANCE.isSingleton(basePresenter) && !Storage.INSTANCE.isCreateFinishedMark(basePresenter)) {
+                    } else if ("onCreate".equalsIgnoreCase(name) && singleton && !createFinishedMark) {
                         Storage.INSTANCE.modifyCreatedMark(basePresenter);
                     }
                     final Class<? extends BasePresenter> clazz = basePresenter.getClass();

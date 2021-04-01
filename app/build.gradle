@@ -29,4 +29,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.uiautomator:uiautomator-v18:2.1.1'
 
     implementation project(':mvp2')
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android-process:2.4'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-object-watcher-android:2.4'
 }
