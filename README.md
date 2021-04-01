@@ -16,7 +16,7 @@ Activity
 @InjectPresenter(values = {MyPresenterImpl1.class, MyPresenterImpl2.class})
 public class MyActivity extends AppCompatActivity implements MyViewAPI {
     // 实例MVPHelper
-    private final MVPHelper MVPHelper = new MVPHelper();
+    private final MVPHelper mvpHelper = new MVPHelper();
     // MyPresenter1 为 MyPresenterImpl1 的接口定义
     private MyPresenterAPI1 mPresenter1;
     // MyPresenter2 为 MyPresenterImpl2 的接口定义
@@ -26,7 +26,7 @@ public class MyActivity extends AppCompatActivity implements MyViewAPI {
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(newBase);
         // 将MVPHelper与你当前的Activity进行绑定
-        MVPHelper.attach(this);
+        mvpHelper.attach(this);
         // 通过P层接口的类对象进行查找P层实例对象
         mPresenter1 = getPresenterAPI(MyPresenterAPI1.class);
         mPresenter2 = getPresenterAPI(MyPresenterAPI2.class);
@@ -36,19 +36,19 @@ public class MyActivity extends AppCompatActivity implements MyViewAPI {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //委托声明周期处理（Presenter中会被触发）
-        MVPHelper.onCreate();
+        mvpHelper.onCreate();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         //委托声明周期处理（Presenter中会被触发）
-        MVPHelper.detach();
+        mvpHelper.detach();
     }
     
     // 提供查询Presenter的方法
     protected <T> T getPresenterAPI(Class<T> cls){
-        return MVPHelper.getPresenterAPI(cls);
+        return mvpHelper.getPresenterAPI(cls);
     }
 }
 ```
@@ -144,7 +144,6 @@ public class MyPresenterImpl1 extends BasePresenter implements MyPresenterAPI{/*
 ```properties
 # MVP
 -keep class z1w3.mvp.support.**{public *;}
--keep class * extends z1w3.mvp.support.BasePresenter{public *;}
 ```
 
 ### 计划中的功能实现
