@@ -1,6 +1,7 @@
 package com.example.test.main;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -10,6 +11,7 @@ import com.example.test.BaseActivity;
 import com.example.test.MyPresenter;
 import com.example.test.MyPresenterAPI;
 import com.example.test.R;
+import com.example.test.first.FirstActivity;
 import com.example.test.first.FirstFragment;
 
 import z1w3.mvp.support.annotations.InjectPresenter;
@@ -24,12 +26,12 @@ public class MainActivity extends BaseActivity implements MainViewAPI {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.text_view);
-        getSupportFragmentManager().beginTransaction().add(R.id.container, new FirstFragment(), "FirstFragment").commit();
+//        getSupportFragmentManager().beginTransaction().add(R.id.container, new FirstFragment(), "FirstFragment").commit();
     }
 
     public void submit(View view) {
         getPresenterAPI(MyPresenterAPI.class).fetchText();
-
+        startActivity(new Intent(this, FirstActivity.class));
     }
 
     @Override
