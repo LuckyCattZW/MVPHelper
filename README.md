@@ -100,6 +100,8 @@ public class MyPresenterImpl1 extends BasePresenter implements MyPresenter {
         super.onCreate();
         // 单例的Presenter 无法获取ViewAPI
         viewAPI = getViewAPI();
+        // 单例的Presenter 只能获取同样是单例的Presenter
+        // 非单例Presenter 无此限制
         mPresenterAPI2 = getOtherPresenterAPI(MyPresenterAPI2.class);
     }
     
