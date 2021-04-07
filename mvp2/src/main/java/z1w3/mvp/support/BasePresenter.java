@@ -108,16 +108,22 @@ public abstract class BasePresenter {
     }
 
     private Map<Class<?>, Object> copyMap(Map<Class<?>, Object> otherPresenterMap){
+        final Singleton selfSingleton = this.getClass().getAnnotation(Singleton.class);
         final HashMap<Class<?>, Object> map = new HashMap<>(otherPresenterMap);
         final ArrayList<Class<?>> list = new ArrayList<>();
         for (Map.Entry<Class<?>, Object> entry : map.entrySet()) {
             if (entry.getValue() == this) {
                 list.add(entry.getKey());
             }
+            if(selfSingleton != null &&
+                    entry.getKey().getAnnotation(Singleton.class) != null){
+                list.add(entry.getKey());
+            }
         }
         for (Class<?> clazz : list) {
             map.remove(clazz);
         }
+
         return map;
     }
 
