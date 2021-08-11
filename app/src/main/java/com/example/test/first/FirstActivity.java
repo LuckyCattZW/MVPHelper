@@ -12,7 +12,7 @@ import com.example.test.R;
 import z1w3.mvp.support.annotations.InjectPresenter;
 
 
-@InjectPresenter(values = {SinglePresenterImpl.class, FirstPresenterImpl.class})
+@InjectPresenter(value = {SinglePresenterImpl.class, FirstPresenterImpl.class})
 public class FirstActivity extends BaseActivity implements FirstViewAPI {
     private TextView textView;
     private Button fragmentBtn;

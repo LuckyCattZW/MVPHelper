@@ -12,11 +12,10 @@ import com.example.test.MyPresenter;
 import com.example.test.MyPresenterAPI;
 import com.example.test.R;
 import com.example.test.first.FirstActivity;
-import com.example.test.first.FirstFragment;
 
 import z1w3.mvp.support.annotations.InjectPresenter;
 
-@InjectPresenter(values = {MyPresenter.class})
+@InjectPresenter(value = {MyPresenter.class})
 public class MainActivity extends BaseActivity implements MainViewAPI {
 
     private TextView textView;

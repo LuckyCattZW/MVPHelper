@@ -155,7 +155,7 @@ public class MVPHelper {
      * 将注解中的Presenter全部进行实例
      */
     private BasePresenter[] newPresenterArray(InjectPresenter annotation) {
-        final Class<? extends BasePresenter>[] values = annotation.values();
+        final Class<? extends BasePresenter>[] values = annotation.value();
         final BasePresenter[] presenterArray = new BasePresenter[values.length];
         for (int index = 0; index < values.length; index++) {
             try {

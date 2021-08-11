@@ -16,7 +16,7 @@ import com.example.test.R;
 
 import z1w3.mvp.support.annotations.InjectPresenter;
 
-@InjectPresenter(values = MyPresenter.class)
+@InjectPresenter(value = MyPresenter.class)
 public class FirstFragment extends BaseFragment implements FirstViewAPI {
 
     private TextView textView;

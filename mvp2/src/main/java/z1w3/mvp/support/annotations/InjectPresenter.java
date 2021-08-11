@@ -10,5 +10,5 @@ import z1w3.mvp.support.BasePresenter;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface InjectPresenter {
-    Class<? extends BasePresenter>[] values();
+    Class<? extends BasePresenter>[] value();
 }
